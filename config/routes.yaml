@@ -1,0 +1,29 @@
+users_list:
+  path: /api/users
+  controller: App\Controller\UserApiController::getAll
+  methods: GET
+
+users_balance:
+  path: /api/users/{id<\d+>}
+  controller: App\Controller\UserApiController::getOne
+  methods: GET
+
+transactions_list:
+  path: /api/users/{id<\d+>}/transactions
+  controller: App\Controller\TransactionApiController::getOutBoundByUser
+  methods: GET
+
+transactions_send:
+  path: /api/users/{id<\d+>}/transactions
+  controller: App\Controller\TransactionApiController::sendToUser
+  methods: POST
+
+app.swagger_ui:
+  path: /api/doc
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+app.swagger:
+  path: /api/doc.json
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger }
